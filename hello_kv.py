@@ -3,7 +3,7 @@ from kivy.lang import Builder
 
 
 # The custom App class
-#   This time the widget is defined in widget.kv
+#   Widget creation code is removed
 #   Another example of abstraction at work!
 class HelloKv(App):
     def build(self):

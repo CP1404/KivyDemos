@@ -1,16 +1,13 @@
 from kivy.app import App
 from kivy.app import Widget
-from kivy.config import Config
 
 
+# Create a custom derived Kivy App class
 class HelloWorld(App):
     def build(self):
         self.title = "Hello world!"
-        return Widget()
+        return Widget()  # build() always returns a widget object
 
 
-# Config.set('graphics', 'resizable', True)
-# Config.set('graphics', 'width', 300)
-# Config.set('graphics', 'height', 200)
-
+# create a custom app object and start it running
 HelloWorld().run()

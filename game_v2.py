@@ -1,7 +1,7 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.app import StringProperty
-from Game import Game
+from board_game import TicTacToeGame
 
 
 class TicTacToe(App):
@@ -9,7 +9,7 @@ class TicTacToe(App):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.game = Game()
+        self.game = TicTacToeGame()
 
     def build(self):
         self.title = "Tic Tac Toe! Version 2"

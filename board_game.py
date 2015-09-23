@@ -3,7 +3,7 @@ class GameError(Exception):
         super().__init__(value)
 
 
-class Game:
+class TicTacToeGame:
     def __init__(self):
         self.next_move = 'X'
         self.board = [['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]

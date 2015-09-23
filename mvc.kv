@@ -1,0 +1,8 @@
+BoxLayout:
+    Label:
+        text: app.message
+        font_size: 42
+    TextInput:
+        id: user_input
+        multiline: False
+        on_text_validate: app.handle_press()

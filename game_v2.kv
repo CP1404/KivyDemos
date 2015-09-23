@@ -1,0 +1,57 @@
+BoxLayout:
+    orientation: 'vertical'
+    GridLayout:
+        id: game_grid
+        rows: 3
+        cols: 3
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 0
+            column: 0
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 0
+            column: 1
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 0
+            column: 2
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 1
+            column: 0
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 1
+            column: 1
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 1
+            column: 2
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 2
+            column: 0
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 2
+            column: 1
+        Button:
+            text: ''
+            on_press: app.pressed(self)
+            row: 2
+            column: 2
+
+    Label:
+        text: app.status_message
+        text_size: self.size
+        halign: 'left'
+        size_hint_y: 0.1

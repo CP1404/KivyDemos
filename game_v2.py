@@ -9,6 +9,9 @@ class TicTacToe(App):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # Python 2 version below:
+        # super(TicTacToe, self).__init__(**kwargs)
+
         self.game = TicTacToeGame()
 
     def build(self):

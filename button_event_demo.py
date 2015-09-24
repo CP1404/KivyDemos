@@ -9,7 +9,7 @@ class ButtonEventDemo(App):
         return self.root
 
     def button_pressed(self, button):
-        print('app: ' + self)  # this is the app object
+        print('app: ' + str(self))  # this is the app object
         print(str(button) + ' says "ouch!"')  # this is the button object
 
 

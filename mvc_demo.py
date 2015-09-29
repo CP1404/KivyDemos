@@ -12,7 +12,8 @@ class MVCDemo(App):
         return self.root
 
     def handle_press(self):
-        MVCDemo.message = self.root.ids.user_input.text
+        self.message = self.root.ids.user_input.text
+
 
 
 # create and start the App running

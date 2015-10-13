@@ -1,0 +1,14 @@
+BoxLayout:
+#    size: (200, 100)
+    orientation: 'vertical'
+    TextInput:
+        id: input_number
+        text: '7'
+        font_size: 48
+    Button:
+        text: 'Square'
+        on_press: app.handle_calculate()
+    Label:
+        id: output_label
+        font_size: 48
+        color: (0, 1, 1, 1)

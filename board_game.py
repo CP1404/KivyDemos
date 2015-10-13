@@ -1,6 +1,11 @@
+"""
+Tic Tac Toe game
+"""
+
+
 class GameError(Exception):
     def __init__(self, value):
-        super().__init__(value)
+        super(GameError, self).__init__(value)
 
 
 class TicTacToeGame:

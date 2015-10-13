@@ -1,4 +1,9 @@
 BoxLayout:
     Button:
+        id: btn01
         text: "Press me"
+        on_press: app.button_pressed(self.text)
+    Button:
+        id: btn02
+        text: "Don't press me"
         on_press: app.button_pressed(self)

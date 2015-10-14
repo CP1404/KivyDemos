@@ -1,3 +1,5 @@
+# This Python file uses the following encoding: utf-8
+
 """
 QuickSum - a fast way to add up, with busy teachers in mind...
 Original version: iOS app 2005

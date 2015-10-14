@@ -1,0 +1,78 @@
+# This is a Widget class rule
+# it allows us to change the attributes all all Widgets!
+# in this case, we make the background of all Widgets white
+# and the text black
+<Widget>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    color: 0, 0, 0.7, 1
+
+# this is a similar class rule, but for Buttons specifically
+# background_down is the image used when the button is pressed
+# notice that this is using canvas.after instead of canvas.before
+# so the canvas changes are applies after the button attributes
+<Button>:
+    font_name: 'BuxtonSketch.ttf'
+    font_size: 56
+    background_normal: ''
+    background_down: 'atlas://data/images/defaulttheme/button'
+    canvas.after:
+        Color:
+            rgba: 0, 0, 0, 1
+        Line:
+            rectangle: self.x + 1, self.y + 1, self.width - 1, self.height - 1
+
+BoxLayout:
+    orientation: 'vertical'
+    Label:
+        text: str(app.current_total)
+        size_hint_y: 0.15
+        font_size: 72
+        text_size: self.size
+        halign: 'right'
+
+    GridLayout:
+        id: digits
+        rows: 3
+        cols: 3
+        size_hint_y: 0.75
+
+        Button:
+            on_press: app._increment_total(self)
+        Button:
+            on_press: app._increment_total(self)
+        Button:
+            on_press: app._increment_total(self)
+        Button:
+            on_press: app._increment_total(self)
+        Button:
+            on_press: app._increment_total(self)
+        Button:
+            on_press: app._increment_total(self)
+        Button:
+            on_press: app._increment_total(self)
+        Button:
+            on_press: app._increment_total(self)
+        Button:
+            on_press: app._increment_total(self)
+
+    GridLayout:
+        rows: 1
+        cols: 2
+        size_hint_y: 0.1
+
+        Button:
+            size_hint_x: 0.66
+            text: 'other'
+            on_press: app._toggle_digits()
+
+        Button:
+            size_hint_x: 0.33
+            text: 'Ø'
+            on_press: app._clear_total()
+
+# note: we set the encoding for this source code file to UTF-8

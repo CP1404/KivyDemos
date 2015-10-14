@@ -1,0 +1,23 @@
+BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        size_hint_y: 0.1
+        orientation: 'horizontal'
+        Spinner:
+            id: state_selection
+            text: app.current_state
+            # values takes a list - could be a literal here or variable in app
+            values: app.state_codes
+            # on_text is the event (not on_release) when the text updates (spinner option is selected)
+            # note that on_text runs even when the text is set for the very first time
+            on_text: app.change_state(self.text)
+        Label:
+            id: output_label
+            font_size: 48
+            color: (1, 1, 0.9, 1)
+    Label:
+        text: 'Choose a state abbreviation on the left'
+        font_size: 48
+        size_hint_y: 0.9
+
+

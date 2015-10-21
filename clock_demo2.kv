@@ -1,0 +1,13 @@
+BoxLayout:
+    orientation: 'vertical'
+    Button:
+        text: 'Start'
+        on_press: app.start()
+
+    Button:
+        text: 'Stop'
+        on_press: app.stop()
+
+    Label:
+        font_size: 24
+        text: app.message

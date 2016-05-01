@@ -1,0 +1,67 @@
+BoxLayout:
+    # this layout has an id so we can check if it is the parent of the popup - below
+    id: mainBox
+    Popup:
+        id: popup
+        # uncomment the line below for a popup that's not full screen/window
+        # size_hint: (.7, .7)
+        title: "Add Phonebook Entry"
+        on_parent:
+            # Make popup disappear immediately
+            if self.parent == mainBox: self.parent.remove_widget(self)
+        BoxLayout:
+            # layout for input fields and action buttons
+            id: inputs
+            orientation: 'vertical'
+            Label:
+                text: 'Name: '
+                size_hint_y: None
+                height: '48dp'
+            TextInput:
+                id: addedName
+                value: ''
+                size_hint_y: None
+                height: '48dp'
+                # the next two lines make it so that pressing Tab moves the cursor
+                # to the next input field instead of entering the Tab character
+                multiline: False
+                write_tab: False
+            Label:
+                text: 'Phone Number: '
+                size_hint_y: None
+                height: '48dp'
+            TextInput:
+                id: addedNumber
+                value: ''
+                size_hint_y: None
+                height: '48dp'
+                multiline: False
+                write_tab: False
+            Button:
+                text: 'Save Entry'
+                on_release: app.press_save(addedName.text, addedNumber.text)
+            Button:
+                text: 'Cancel'
+                on_release: app.press_cancel()
+            Label:
+                # this is a different Label than the main GUI screen,
+                # but uses the same string data
+                text: app.status_text
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                id: addButton
+                size_hint_x: 0.3
+                text: 'Add New Entry'
+                on_release: app.press_add()
+            GridLayout:
+                # this layout is populated with (button) widgets in app code
+                id: entriesBox
+                cols: 1
+                orientation: 'vertical'
+        Label:
+            id: statusLabel
+            size_hint_y: 0.1
+            text: app.status_text

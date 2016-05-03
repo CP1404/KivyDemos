@@ -10,6 +10,7 @@ A counter field is updated every second
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.clock import Clock
+from kivy.config import Config
 
 
 class ClockDemo(App):
@@ -19,11 +20,14 @@ class ClockDemo(App):
         self.clock = None
 
     def build(self):
+        Config.set('graphics', 'width', '200')
+        Config.set('graphics', 'height', '200')
+
         self.clock = Clock.schedule_interval(self.update, 1)  # define the ClockEvent object
         self.root = Builder.load_file('clock_demo.kv')
         return self.root
 
-    # this method is called by the ClockEvent object
+    # this method is called by the ClockDemo object
     def update(self, dt):
         print('counter {} dt {}'.format(self.counter, dt))
         self.counter += 1

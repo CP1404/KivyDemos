@@ -31,7 +31,7 @@ class SpinnerDemo(App):
     def change_state(self, state_code):
         """ handle change of spinner selection, output result to label widget """
         self.root.ids.output_label.text = STATES[state_code]
-        print "changed to", state_code
+        print("changed to", state_code)
 
 
 SpinnerDemo().run()

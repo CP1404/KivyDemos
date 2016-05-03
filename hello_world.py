@@ -6,7 +6,7 @@ from kivy.app import Widget
 class HelloWorld(App):
     def build(self):
         self.root = Widget()
-        return self.root  # build() always returns a widget object
+        return self.root  # build() should always return a widget object
 
 
 # create a custom app object and start it running

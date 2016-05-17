@@ -56,8 +56,22 @@ class PhonebookApp(App):
         :param instance: the Kivy button instance
         :return: None
         """
+        # update status text
         name = instance.text
         self.status_text = "{}'s number is {}".format(name, self.phonebook[name])
+        # set button state
+        # print(instance.state)
+        instance.state = 'down'
+
+    def press_clear(self):
+        """
+        Clear any buttons that have been selected (visually) and reset status text
+        :return: None
+        """
+        # use the .children attribute to access all widgets that are "in" another widget
+        for instance in self.root.ids.entriesBox.children:
+            instance.state = 'normal'
+        self.status_text = ""
 
     def press_add(self):
         """

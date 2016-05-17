@@ -4,7 +4,7 @@ BoxLayout:
     Popup:
         id: popup
         # uncomment the line below for a popup that's not full screen/window
-        # size_hint: (.7, .7)
+        size_hint: (.7, .7)
         title: "Add Phonebook Entry"
         on_parent:
             # Make popup disappear immediately
@@ -51,11 +51,18 @@ BoxLayout:
         orientation: 'vertical'
         BoxLayout:
             orientation: 'horizontal'
-            Button:
-                id: addButton
+            BoxLayout:
+                orientation: 'vertical'
                 size_hint_x: 0.3
-                text: 'Add New Entry'
-                on_release: app.press_add()
+                Button:
+                    id: addButton
+                    text: 'Add New Entry'
+                    on_release: app.press_add()
+                Button:
+                    id: clearButton
+                    text: 'Clear'
+                    on_release: app.press_clear()
+
             GridLayout:
                 # this layout is populated with (button) widgets in app code
                 id: entriesBox

@@ -21,7 +21,7 @@ class DynamicWidgetsApp(App):
         """
         Construct main app
         """
-        super(DynamicWidgetsApp, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         # basic data example - dictionary of names: phone numbers
         # TODO: After running it, add another entry to the dictionary and see how the layout changes
         self.phonebook = {"Bob Brown": "0414144411", "Cat Cyan": "0441411211", "Oren Ochre": "0432123456"}
@@ -58,5 +58,11 @@ class DynamicWidgetsApp(App):
         name = instance.text
         self.status_text = "{}'s number is {}".format(name, self.phonebook[name])
 
+    def clear_all(self):
+        """
+        Clear all of the widgets that are children of the "entriesBox" layout widget
+        :return:
+        """
+        self.root.ids.entriesBox.clear_widgets()
 
 DynamicWidgetsApp().run()

@@ -39,6 +39,7 @@ class QuickSum(App):
         digit = source.text
         if digit in QuickSum.FRACTIONS.keys():
             value = QuickSum.FRACTIONS[digit]
+            self._toggle_digits()
         else:
             value = int(digit)
         result = self.current_total + value

@@ -1,6 +1,6 @@
+import random
 from kivy.app import App
 from kivy.lang import Builder
-import random
 
 
 class IDDemo(App):
@@ -16,6 +16,5 @@ class IDDemo(App):
             self.root.ids.my_label.text = "stop that!!"
 
 
-# create and start the App running
-app = IDDemo()
-app.run()
+# Create and start the App running
+IDDemo().run()

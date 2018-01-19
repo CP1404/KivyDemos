@@ -16,7 +16,7 @@ class SimpleAnimation(App):
         self.ball = None
 
     def build(self):
-        Clock.schedule_interval(self.update, 1)
+        Clock.schedule_interval(self.update, 0.02)
         self.root = Builder.load_file("simple_animation_demo.kv")
         self.ball = Ellipse()
         self.ball.size = (100, 100)
@@ -27,12 +27,10 @@ class SimpleAnimation(App):
         self.root.canvas.add(Rectangle())
         return self.root
 
-    def update(self, dt):
-        self.info_message = '{:.5f}'.format(dt)
-        x, y = self.ball.pos
-        self.ball.pos = x + 1, y
+    def update(self, seconds):
+        self.info_message = '{:.5f}'.format(seconds)
+        _x, _y = self.ball.pos
+        self.ball.pos = _x + 1, _y
 
 
-if __name__ == '__main__':
-    app = SimpleAnimation()
-    app.run()
+SimpleAnimation().run()

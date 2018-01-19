@@ -10,16 +10,14 @@ from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
 
-__author__ = 'Lindsay Ward'
-
 
 class DynamicWidgetsApp(App):
-    """ Main program - Kivy app to demo dynamic widget creation """
+    """Main program - Kivy app to demo dynamic widget creation."""
     status_text = StringProperty()
 
     def __init__(self, **kwargs):
         """
-        Construct main app
+        Construct main app.
         """
         super().__init__(**kwargs)
         # basic data example - dictionary of names: phone numbers
@@ -28,7 +26,7 @@ class DynamicWidgetsApp(App):
 
     def build(self):
         """
-        Build the Kivy GUI
+        Build the Kivy GUI.
         :return: reference to the root Kivy widget
         """
         self.title = "Dynamic Widgets"
@@ -42,27 +40,30 @@ class DynamicWidgetsApp(App):
         :return: None
         """
         for name in self.phonebook:
-            # create a button for each phonebook entry 
-            temp_button = Button(text=name)
+            # create a button for each phonebook entry, specifying the text and id
+            # (although text and id are the same in this case, you should see how this works)
+            temp_button = Button(text=name, id=name)
             temp_button.bind(on_release=self.press_entry)
-            # add the button to the "entriesBox" using add_widget()
-            self.root.ids.entriesBox.add_widget(temp_button)
+            # add the button to the "entries_box" using add_widget()
+            self.root.ids.entries_box.add_widget(temp_button)
 
     def press_entry(self, instance):
         """
-        Handler for pressing entry buttons
+        Handle pressing entry buttons.
         :param instance: the Kivy button instance
         :return: None
         """
+        # get name (dictionary key) from the id of Button we clicked on
+        name = instance.id  # or name = instance.text
         # update status text
-        name = instance.text
         self.status_text = "{}'s number is {}".format(name, self.phonebook[name])
 
     def clear_all(self):
         """
-        Clear all of the widgets that are children of the "entriesBox" layout widget
+        Clear all of the widgets that are children of the "entries_box" layout widget
         :return:
         """
-        self.root.ids.entriesBox.clear_widgets()
+        self.root.ids.entries_box.clear_widgets()
+
 
 DynamicWidgetsApp().run()

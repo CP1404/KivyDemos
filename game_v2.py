@@ -26,5 +26,6 @@ class TicTacToe(App):
             self.status_message = "game over!"
             self.root.ids.game_grid.disabled = True
 
+
 # create and start the App running
 TicTacToe().run()

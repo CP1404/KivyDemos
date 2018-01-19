@@ -17,22 +17,26 @@ class ClockDemo(App):
     def __init__(self, **kwargs):
         super(ClockDemo, self).__init__(**kwargs)
         self.counter = 0
-        self.clock = None
+        self.clock_event = None
 
     def build(self):
         Config.set('graphics', 'width', '200')
         Config.set('graphics', 'height', '200')
 
-        self.clock = Clock.schedule_interval(self.update, 1)  # define the ClockEvent object
+        # Creates a ClockEvent object and schedule the callback function
+        self.clock_event = Clock.schedule_interval(self.update, 1)
         self.root = Builder.load_file('clock_demo.kv')
         return self.root
 
     # this method is called by the ClockDemo object
-    def update(self, dt):
-        print('counter {} dt {}'.format(self.counter, dt))
+    def update(self, seconds):
+        print('counter {:2} dt {}'.format(self.counter, seconds))
         self.counter += 1
+        if self.counter >= 10:
+            # Cancel the callback function
+            self.clock_event.cancel()
+            # (Or unschedule using a reference to the ClockEvent object)
+            # Clock.unschedule(self.clock_event)
 
 
-if __name__ == '__main__':
-    app = ClockDemo()
-    app.run()
+ClockDemo().run()

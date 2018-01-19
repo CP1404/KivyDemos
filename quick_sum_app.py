@@ -60,6 +60,4 @@ class QuickSum(App):
             self.root.ids.digits.children[i].text = str(digits[i])
 
 
-if __name__ == '__main__':
-    app = QuickSum()
-    app.run()
+QuickSum().run()

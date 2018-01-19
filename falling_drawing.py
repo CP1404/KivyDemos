@@ -14,6 +14,7 @@ class Ball(Ellipse):
     def __init__(self, **kwargs):
         Ellipse.__init__(self, **kwargs)
         self.speed = 1
+        self.pos = 0, 0
 
     def fall(self):
         if self.pos[1] > 0:
@@ -33,7 +34,7 @@ class Display(Widget):
 
     def move_points(self, _):
         for point in self.canvas.children:
-            if type(point) is Ball:
+            if isinstance(point, Ball):
                 point.fall()
                 if point.at_bottom():
                     self.canvas.remove(point)

@@ -11,8 +11,6 @@ from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
 
-__author__ = 'Lindsay Ward'
-
 
 class PhonebookApp(App):
     """
@@ -44,11 +42,11 @@ class PhonebookApp(App):
         :return: None
         """
         for name in self.phonebook:
-            # create a button for each phonebook entry 
+            # create a button for each phonebook entry
             temp_button = Button(text=name)
             temp_button.bind(on_release=self.press_entry)
-            # add the button to the "entriesBox" using add_widget()
-            self.root.ids.entriesBox.add_widget(temp_button)
+            # add the button to the "entries_box" using add_widget()
+            self.root.ids.entries_box.add_widget(temp_button)
 
     def press_entry(self, instance):
         """
@@ -69,7 +67,7 @@ class PhonebookApp(App):
         :return: None
         """
         # use the .children attribute to access all widgets that are "in" another widget
-        for instance in self.root.ids.entriesBox.children:
+        for instance in self.root.ids.entries_box.children:
             instance.state = 'normal'
         self.status_text = ""
 
@@ -91,11 +89,11 @@ class PhonebookApp(App):
         """
         self.phonebook[added_name] = added_number
         # change the number of columns based on the number of entries (no more than 5 rows of entries)
-        self.root.ids.entriesBox.cols = len(self.phonebook) // 5 + 1
+        self.root.ids.entries_box.cols = len(self.phonebook) // 5 + 1
         # add button for new entry (same as in create_entry_buttons())
         temp_button = Button(text=added_name)
         temp_button.bind(on_release=self.press_entry)
-        self.root.ids.entriesBox.add_widget(temp_button)
+        self.root.ids.entries_box.add_widget(temp_button)
         # close popup
         self.root.ids.popup.dismiss()
         self.clear_fields()
@@ -106,8 +104,8 @@ class PhonebookApp(App):
         If we don't do this, the popup will still have text in it when opened again
         :return: None
         """
-        self.root.ids.addedName.text = ""
-        self.root.ids.addedNumber.text = ""
+        self.root.ids.added_name.text = ""
+        self.root.ids.added_number.text = ""
 
     def press_cancel(self):
         """

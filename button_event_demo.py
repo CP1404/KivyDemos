@@ -8,9 +8,11 @@ class ButtonEventDemo(App):
         self.root = Builder.load_file('button_event.kv')
         return self.root
 
-    def button_pressed(self, button):
-        print('app: ' + str(self))  # this is the app object
-        print(str(button) + ' says "ouch!"')  # this is the button object
+    def handle_button_press(self, button):
+        # The parameter passed is the button object.
+        # We can then access its attributes, like text, pos, font_name, width...
+        # But we can not directly access its id if specified in the kv file (due to the way Kivy is designed)
+        print("Button text: '{}', pos: {}".format(button.text, button.pos))
 
 
 ButtonEventDemo().run()

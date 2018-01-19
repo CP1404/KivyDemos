@@ -9,5 +9,5 @@ class HelloWorld(App):
         return self.root  # build() should always return a widget object
 
 
-# create a custom app object and start it running
+# create a custom App object and start it running
 HelloWorld().run()

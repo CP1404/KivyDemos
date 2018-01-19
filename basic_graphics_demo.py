@@ -17,6 +17,4 @@ class BasicGraphicsDemo(App):
         return self.root
 
 
-if __name__ == '__main__':
-    app = BasicGraphicsDemo()
-    app.run()
+BasicGraphicsDemo().run()

@@ -1,11 +1,8 @@
-"""
-Tic Tac Toe game
-"""
+"""Tic Tac Toe game."""
 
 
 class GameError(Exception):
-    def __init__(self, value):
-        super(GameError, self).__init__(value)
+    pass
 
 
 class TicTacToeGame:
@@ -14,7 +11,7 @@ class TicTacToeGame:
         self.board = [['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
 
     def __str__(self):
-        return str(self.board)
+        return "\n".join((str(row) for row in self.board))
 
     def make_move(self, row, column):
         try:

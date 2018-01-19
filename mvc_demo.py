@@ -15,6 +15,5 @@ class MVCDemo(App):
         self.message = self.root.ids.user_input.text
 
 
-
 # create and start the App running
 MVCDemo().run()

@@ -2,16 +2,26 @@
 
 from board_game import TicTacToeGame, GameError
 
-game = TicTacToeGame()
-while not game.is_over():
-    try:
-        print(game)
-        row = int(input('Enter row: '))
-        column = int(input('Enter column: '))
+
+def display_board(board):
+    for row in board:
+        print("{} {} {}".format(*row))
+
+
+def main():
+    game = TicTacToeGame()
+    while not game.is_over():
         try:
-            game.make_move(row, column)
-        except GameError as error:
-            print(error)
-    except ValueError:
-        print('invalid input, try again')
-print(game)
+            display_board(game.board)
+            row = int(input('Enter row: '))
+            column = int(input('Enter column: '))
+            try:
+                game.make_move(row, column)
+            except GameError as error:
+                print(error)
+        except ValueError:
+            print('Invalid input.Try again.')
+    display_board(game.board)
+
+
+main()

@@ -2,6 +2,8 @@
 Kivy example for CP1404/CP5632, IT@JCU
 Dynamically create buttons based on custom class objects
 For something to do, pressing the guitar buttons changes the cost in the guitar objects
+Note we can either associate the buttons with the guitar objects by name (then use name to find object in list)
+or directly assign the object reference to the button (this is a REFERENCE to the existing object, not a copy).
 Lindsay Ward
 30/01/2018
 """
@@ -10,7 +12,6 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
-
 from guitar import Guitar
 
 DISCOUNT_RATE = 0.9
@@ -25,7 +26,7 @@ class GuitarsApp(App):
         Construct main app.
         """
         super().__init__(**kwargs)
-        # basic data example - list of Guitar objects
+        # Basic data example - list of Guitar objects - could be loaded from a file or something
         self.guitars = [Guitar("Gibson L-5 CES", 1922, 16035.40),
                         Guitar("Line 6 JTV-59", 2010, 1512.9),
                         Guitar("Ukelele", 2017, 99.95)]
@@ -47,32 +48,26 @@ class GuitarsApp(App):
         """
         self.status_text = "Click on a guitar to reduce its cost by {:.1%}%".format(1 - DISCOUNT_RATE)
         for guitar in self.guitars:
-            # create a button for each Guitar object, specifying the text and id
-            temp_button = Button(text=str(guitar), id=guitar.name)
+            # Create a button for each Guitar object, specifying the text
+            temp_button = Button(text=str(guitar))
             temp_button.bind(on_release=self.press_entry)
-            # add the button to the "entries_box" using add_widget()
+            # Store a reference to the guitar object in the button object
+            temp_button.guitar = guitar
             self.root.ids.entries_box.add_widget(temp_button)
 
     def press_entry(self, instance):
         """
-        Handle pressing buttons.
+        Handle pressing buttons, changing price of guitar and updating display.
         :param instance: the Kivy button instance
         :return: None
         """
-        # get guitar object from list based on the id of Button we clicked on (id = guitar name)
-        name = instance.id
-        for guitar in self.guitars:
-            if guitar.name == name:
-                break
-
-        # update guitar cost in the original object
-        # note: we can safely ignore the warning "local variable might be referenced before assignment"
-        # pylint: disable=undefined-loop-variable
+        # Each button was given its own ".guitar" object reference, so we can get it directly
+        guitar = instance.guitar
         old_cost = guitar.cost
         guitar.cost *= DISCOUNT_RATE
-        # update button text and label
+        # Update button text and label
         instance.text = str(guitar)
-        self.status_text = "Your {} was ${:,.2f} but now costs ${:,.2f}".format(name, old_cost, guitar.cost)
+        self.status_text = "Your {} was ${:,.2f} but now costs ${:,.2f}".format(guitar.name, old_cost, guitar.cost)
 
 
 GuitarsApp().run()

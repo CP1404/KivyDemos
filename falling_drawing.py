@@ -8,13 +8,11 @@ from kivy.uix.widget import Widget
 from kivy.clock import Clock
 
 
-# A movable Ellipse shape
-# It slowly moves and increases in speed
 class Ball(Ellipse):
+    """A movable Ellipse shape that slowly moves and increases in speed."""
     def __init__(self, **kwargs):
-        Ellipse.__init__(self, **kwargs)
+        super().__init__(**kwargs)
         self.speed = 1
-        self.pos = 0, 0
 
     def fall(self):
         if self.pos[1] > 0:
@@ -26,10 +24,10 @@ class Ball(Ellipse):
         return self.pos[1] <= 0
 
 
-# The display area for the ball objects
 class Display(Widget):
+    """The display area for the ball objects."""
     def __init__(self):
-        Widget.__init__(self)
+        super().__init__()
         Clock.schedule_interval(self.move_points, 0.025)
 
     def move_points(self, _):
@@ -39,10 +37,9 @@ class Display(Widget):
                 if point.at_bottom():
                     self.canvas.remove(point)
 
-    # Ball color generator
-    # For when Balls are added to the Display's canvas
     @staticmethod
     def generate_color():
+        """Generate a random colour."""
         red = random()
         green = random()
         blue = random()
@@ -60,6 +57,7 @@ class Display(Widget):
 
 
 class FallingDrawingApp(App):
+    """Kivy Demo app."""
     def build(self):
         self.root = Builder.load_file("falling_drawing.kv")
         return self.root

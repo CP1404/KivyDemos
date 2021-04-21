@@ -34,7 +34,7 @@ class DynamicWidgetsApp(App):
         for name in self.name_to_phone:
             # create a button for each data entry, specifying the text and id
             # (although text and id are the same in this case, you should see how this works)
-            temp_button = Button(text=name, id=name)
+            temp_button = Button(text=name)
             temp_button.bind(on_release=self.press_entry)
             # add the button to the "entries_box" layout widget
             self.root.ids.entries_box.add_widget(temp_button)
@@ -44,8 +44,8 @@ class DynamicWidgetsApp(App):
         Handle pressing entry buttons.
         :param instance: the Kivy button instance that was clicked
         """
-        # get name (dictionary key) from the id of Button we clicked on
-        name = instance.id  # or name = instance.text
+        # get name (dictionary key) from the text of Button we clicked on
+        name = instance.text
         # update status text
         self.status_text = "{}'s number is {}".format(name, self.name_to_phone[name])
 

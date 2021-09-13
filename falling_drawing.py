@@ -26,8 +26,8 @@ class Ball(Ellipse):
 
 class Display(Widget):
     """The display area for the ball objects."""
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         Clock.schedule_interval(self.move_points, 0.025)
 
     def move_points(self, _):

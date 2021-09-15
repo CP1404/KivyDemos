@@ -8,17 +8,18 @@ from kivy.properties import StringProperty
 
 
 class MVCDemo(App):
-    """The class variable in the app is the model"""
+    """The class variable in the app is the 'model'."""
     message = StringProperty()
 
     def build(self):
-        """Construct the app"""
+        """Construct the app."""
         self.title = "Simple MVC Demo"
         self.root = Builder.load_file('mvc.kv')
+        self.message = "Type in the field & press Enter"
         return self.root
 
-    def handle_press(self):
-        """Handle pressing the button by updating the model from the view"""
+    def handle_update(self):
+        """Handle changes to the text input by updating the model from the view."""
         self.message = self.root.ids.user_input.text
 
 

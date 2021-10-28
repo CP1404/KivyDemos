@@ -2,8 +2,8 @@
 Kivy example for CP1404/CP5632, IT@JCU
 Dynamically create buttons based on custom class objects
 For something to do, pressing the guitar buttons changes the cost in the guitar objects
-Note we can either associate the buttons with the guitar objects by name (then use name to find object in list)
-or directly assign the object reference to the button (this is a REFERENCE to the existing object, not a copy).
+Note we can directly assign the object to the button.
+This is a REFERENCE to the existing object, not a copy.
 Lindsay Ward
 30/01/2018
 """
@@ -22,9 +22,7 @@ class GuitarsApp(App):
     status_text = StringProperty()
 
     def __init__(self, **kwargs):
-        """
-        Construct main app.
-        """
+        """Construct main Kivy app."""
         super().__init__(**kwargs)
         # Basic data example - list of Guitar objects - could be loaded from a file or something
         self.guitars = [Guitar("Gibson L-5 CES", 1922, 16035.40),

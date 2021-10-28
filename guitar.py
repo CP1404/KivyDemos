@@ -1,16 +1,15 @@
 """
-CP1404/CP5632 Practical - Suggested Solution
-Guitar class
+CP1404/CP5632 Guitar class from practicals
 """
-# Note: It would be better to get the current year from the system clock
-# and you might like to do that: lookup the "datetime" module
-CURRENT_YEAR = 2018
+from datetime import datetime
+
 VINTAGE_AGE = 50
 
 
 class Guitar:
     """Guitar class for storing details of a guitar."""
-    def __init__(self, name="", year=0, cost=0):
+
+    def __init__(self, name="", year=0, cost=0.0):
         """Initialise a Guitar."""
         self.name = name
         self.year = year
@@ -21,8 +20,9 @@ class Guitar:
         return "{} ({}) : ${:,.2f}".format(self.name, self.year, self.cost)
 
     def get_age(self):
-        """Get the age of a guitar based on the CURRENT_YEAR."""
-        return CURRENT_YEAR - self.year
+        """Get the age of a guitar."""
+        current_year = datetime.now().year
+        return current_year - self.year
 
     def is_vintage(self):
         """Determine if a Guitar is considered vintage or not based on age."""

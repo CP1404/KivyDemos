@@ -9,6 +9,7 @@ Lindsay Ward
 """
 
 from kivy.app import App
+from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
@@ -27,24 +28,19 @@ class GuitarsApp(App):
         # Basic data example - list of Guitar objects - could be loaded from a file or something
         self.guitars = [Guitar("Gibson L-5 CES", 1922, 16035.40),
                         Guitar("Line 6 JTV-59", 2010, 1512.9),
-                        Guitar("Ukelele", 2017, 99.95)]
+                        Guitar("Ukulele", 2017, 99.95)]
 
     def build(self):
-        """
-        Build the Kivy GUI.
-        :return: reference to the root Kivy widget
-        """
+        """Build the Kivy GUI."""
+        Window.size = 1000, 800
         self.title = "Kivy + Classes = Guitars"
         self.root = Builder.load_file('guitars_app.kv')
         self.create_widgets()
         return self.root
 
     def create_widgets(self):
-        """
-        Create buttons from list of objects and add them to the GUI.
-        :return: None
-        """
-        self.status_text = "Click on a guitar to reduce its cost by {:.1%}%".format(1 - DISCOUNT_RATE)
+        """Create buttons from list of objects and add them to the GUI."""
+        self.status_text = f"Click on a guitar to reduce its cost by {1 - DISCOUNT_RATE:.1%}"
         for guitar in self.guitars:
             # Create a button for each Guitar object, specifying the text
             temp_button = Button(text=str(guitar))
@@ -54,18 +50,14 @@ class GuitarsApp(App):
             self.root.ids.entries_box.add_widget(temp_button)
 
     def press_entry(self, instance):
-        """
-        Handle pressing buttons, changing price of guitar and updating display.
-        :param instance: the Kivy button instance
-        :return: None
-        """
+        """Handle pressing guitar buttons."""
         # Each button was given its own ".guitar" object reference, so we can get it directly
         guitar = instance.guitar
         old_cost = guitar.cost
         guitar.cost *= DISCOUNT_RATE
         # Update button text and label
         instance.text = str(guitar)
-        self.status_text = "Your {} was ${:,.2f} but now costs ${:,.2f}".format(guitar.name, old_cost, guitar.cost)
+        self.status_text = f"Your {guitar.name} was ${old_cost:,.2f} but now costs ${guitar.cost:,.2f}"
 
 
 GuitarsApp().run()

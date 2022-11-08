@@ -40,17 +40,14 @@ class DynamicWidgetsApp(App):
             self.root.ids.entries_box.add_widget(temp_button)
 
     def press_entry(self, instance):
-        """
-        Handle pressing entry buttons.
-        :param instance: the Kivy button instance that was clicked
-        """
+        """Handle pressing entry buttons."""
         # get name (dictionary key) from the text of Button we clicked on
         name = instance.text
         # update status text
         self.status_text = "{}'s number is {}".format(name, self.name_to_phone[name])
 
     def clear_all(self):
-        """Clear all of the widgets that are children of the "entries_box" layout widget."""
+        """Clear all widgets that are children of the "entries_box" layout widget."""
         self.root.ids.entries_box.clear_widgets()
 
 

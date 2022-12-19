@@ -14,6 +14,7 @@ from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
 from guitar import Guitar
+from guitars_console import load_guitars
 
 DISCOUNT_RATE = 0.9
 
@@ -29,6 +30,7 @@ class GuitarsApp(App):
         self.guitars = [Guitar("Gibson L-5 CES", 1922, 16035.40),
                         Guitar("Line 6 JTV-59", 2010, 1512.9),
                         Guitar("Ukulele", 2017, 99.95)]
+        # self.guitars = load_guitars("guitars.json")
 
     def build(self):
         """Build the Kivy GUI."""

@@ -15,9 +15,8 @@ STATE_TO_NAME = {'QLD': "Queensland", 'NSW': "New South Wales", 'VIC': "Victoria
 
 
 class SpinnerDemo(App):
-    """ SpinnerDemo is a Kivy App using a spinner to display state names """
+    """Kivy App using a Spinner drop-down select widget to display state names."""
     output_text = StringProperty()
-    current_state = StringProperty()
     state_codes = ListProperty()
 
     def build(self):
@@ -25,13 +24,12 @@ class SpinnerDemo(App):
         self.title = "Spinner Demo"
         self.root = Builder.load_file('spinner_demo.kv')
         self.state_codes = sorted(STATE_TO_NAME.keys())
-        self.current_state = self.state_codes[0]
         return self.root
 
     def change_state(self, state_code):
-        """ handle change of spinner selection, output result to label widget """
+        """Handle change of spinner selection, output result to string property for label."""
         self.output_text = STATE_TO_NAME[state_code]
-        print("changed to", state_code)
+        print("Changed to", state_code)
 
 
 SpinnerDemo().run()

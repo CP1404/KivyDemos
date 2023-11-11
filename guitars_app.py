@@ -36,7 +36,7 @@ class GuitarsApp(App):
         """Build the Kivy GUI."""
         Window.size = 1000, 800
         self.title = "Kivy + Classes = Guitars"
-        self.root = Builder.load_file('guitars_app.kv')
+        self.root = Builder.load_file("guitars_app.kv")
         self.create_widgets()
         return self.root
 
@@ -60,6 +60,13 @@ class GuitarsApp(App):
         # Update button text and label
         instance.text = str(guitar)
         self.status_text = f"Your {guitar.name} was ${old_cost:,.2f} but now costs ${guitar.cost:,.2f}"
+
+    def on_stop(self):
+        """Display debugging output when the program is closed."""
+        # The on_stop function runs when the user quits.
+        # It is useful for saving files, closing database connections, etc.
+        print(self.guitars)
+        print("Goodbye")
 
 
 GuitarsApp().run()

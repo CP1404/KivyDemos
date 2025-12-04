@@ -1,5 +1,3 @@
-# This Python file uses the following encoding: utf-8
-
 """
 QuickSum - a fast way to add up, with busy teachers in mind...
 Original version: iOS app 2005
@@ -13,7 +11,7 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.properties import NumericProperty
 
-__author__ = 'Jason'
+__author__ = 'Jason Holdsworth'
 
 
 class QuickSum(App):
@@ -23,6 +21,7 @@ class QuickSum(App):
     FRACTION_TO_DECIMAL = {'½': 0.5, '¼': 0.25, '¾': 0.75}
 
     def __init__(self, **kwargs):
+        """Construct the App object."""
         super().__init__(**kwargs)
         self._digits_toggled = False
 

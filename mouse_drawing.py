@@ -9,8 +9,10 @@ from kivy.uix.widget import Widget
 
 
 class MoveWithMouse(App):
+    """Kivy Demo for object drawing."""
 
     def __init__(self, **kwargs):
+        """Construct the App object."""
         super().__init__(**kwargs)
         Window.size = (500, 300)
         self.ball = Ellipse()
@@ -27,6 +29,7 @@ class MoveWithMouse(App):
         return self.root
 
     def update(self, seconds):
+        """Update the app; method called by scheduler."""
         # print(self.root_window.mouse_pos)
         # Account for the width of the ball
         self.ball.pos = (self.root_window.mouse_pos[0] - self.ball.size[0] / 2,

@@ -8,6 +8,7 @@ class TicTacToe(App):
     status_message = StringProperty('shall we play a game?')
 
     def __init__(self, **kwargs):
+        """Construct the App object."""
         super().__init__(**kwargs)
         self.game = TicTacToeGame()
 

@@ -12,6 +12,7 @@ class Ball(Ellipse):
     """A movable Ellipse shape that slowly moves and increases in speed."""
 
     def __init__(self, **kwargs):
+        """Construct the App object."""
         super().__init__(**kwargs)
         self.speed = 1
 

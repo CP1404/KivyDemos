@@ -12,7 +12,10 @@ from kivy.config import Config
 
 
 class ClockDemo(App):
+    """Kivy Clock Demo."""
+
     def __init__(self, **kwargs):
+        """Construct the App object."""
         super().__init__(**kwargs)
         self.counter = 0
         self.clock_event = None

@@ -11,6 +11,7 @@ class SimpleAnimation(App):
     info_message = StringProperty()
 
     def __init__(self, **kwargs):
+        """Construct the App object."""
         super().__init__(**kwargs)
         Window.size = (500, 300)
         self.ball = None

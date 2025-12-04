@@ -15,7 +15,7 @@ def main():
 def load_guitars(filename):
     """Load guitars from JSON file."""
     guitars = []
-    with open(filename) as in_file:
+    with open(filename, encoding='utf-8') as in_file:
         records = json.load(in_file)
     # For debugging: Let's see what the data looks like (a list of dictionaries)
     print(repr(records))

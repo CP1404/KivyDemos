@@ -12,7 +12,7 @@ class MVCDemo(App):
     message = StringProperty()
 
     def build(self):
-        """Construct the app."""
+        """Build the Kivy app from the kv file."""
         self.title = "Simple MVC Demo"
         self.root = Builder.load_file('mvc.kv')
         self.message = "Type in the field & press Enter"

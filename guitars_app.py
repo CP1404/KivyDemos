@@ -12,7 +12,7 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
-from guitar import Guitar
+# from guitar import Guitar
 from guitars_console import load_guitars
 
 DISCOUNT_RATE = 0.9
@@ -61,7 +61,7 @@ class GuitarsApp(App):
         guitar.cost *= DISCOUNT_RATE
         # Update button text and label
         instance.text = str(guitar)
-        self.status_text = f"Your {guitar.name} was ${old_cost:,.2f} but now costs ${guitar.cost:,.2f}"
+        self.status_text = f"{guitar.name} was ${old_cost:,.2f} but now costs ${guitar.cost:,.2f}"
 
     def on_stop(self):
         """Display debugging output when the program is closed."""

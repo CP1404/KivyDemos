@@ -4,6 +4,7 @@ from kivy.lang import Builder
 
 class HintsDemo(App):
     def build(self):
+        """Build the Kivy app from the kv file."""
         self.title = "Layout Hints Demo"
         self.root = Builder.load_file('hints_demo.kv')
         return self.root

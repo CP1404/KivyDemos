@@ -33,5 +33,5 @@ class Guitar:
         return self.get_age() >= VINTAGE_AGE
 
     def __lt__(self, other):
-        """Determine if Guitar is considered less than the other object based on year (older is less than younger)."""
+        """Determine if Guitar is less than other object based on year (older < younger)."""
         return self.year < other.year

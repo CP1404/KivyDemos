@@ -5,6 +5,7 @@ from kivy.lang import Builder
 
 class IDDemo(App):
     def build(self):
+        """Build the Kivy app from the kv file."""
         self.title = "Demoing the id attribute"
         self.root = Builder.load_file('id_demo.kv')
         return self.root

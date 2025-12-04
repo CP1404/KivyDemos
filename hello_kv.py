@@ -7,10 +7,11 @@ from kivy.lang import Builder
 #   Another example of abstraction at work!
 class HelloKv(App):
     def build(self):
+        """Build the Kivy app from the kv file."""
         self.title = "Hello world!"
         self.root = Builder.load_file('widget.kv')
         return self.root
 
 
-# create and start the App running
+# Create and start the App running
 HelloKv().run()

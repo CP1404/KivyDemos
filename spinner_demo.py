@@ -9,8 +9,9 @@ from kivy.lang import Builder
 from kivy.properties import StringProperty
 from kivy.properties import ListProperty
 
-STATE_TO_NAME = {'QLD': "Queensland", 'NSW': "New South Wales", 'VIC': "Victoria", 'WA': "Western Australia",
-                 'TAS': "Tasmania", 'NT': "Northern Territory", 'SA': "South Australia", 'ACT': "Canberra",
+STATE_TO_NAME = {'QLD': "Queensland", 'NSW': "New South Wales", 'VIC': "Victoria",
+                 'WA': "Western Australia", 'TAS': "Tasmania", 'NT': "Northern Territory",
+                 'SA': "South Australia", 'ACT': "Canberra",
                  'NQ': "Cowboys!", 'NZ': "New Zealand"}
 
 
@@ -20,7 +21,7 @@ class SpinnerDemo(App):
     state_codes = ListProperty()
 
     def build(self):
-        """ build Kivy app from the kv file """
+        """Build the Kivy app from the kv file."""
         self.title = "Spinner Demo"
         self.root = Builder.load_file('spinner_demo.kv')
         self.state_codes = sorted(STATE_TO_NAME.keys())

@@ -10,6 +10,7 @@ from kivy.clock import Clock
 
 class Ball(Ellipse):
     """A movable Ellipse shape that slowly moves and increases in speed."""
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.speed = 1
@@ -26,6 +27,7 @@ class Ball(Ellipse):
 
 class Display(Widget):
     """The display area for the ball objects."""
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         Clock.schedule_interval(self.move_points, 0.025)
@@ -58,7 +60,9 @@ class Display(Widget):
 
 class FallingDrawingApp(App):
     """Kivy Demo app."""
+
     def build(self):
+        """Build the Kivy app from the kv file."""
         self.root = Builder.load_file("falling_drawing.kv")
         return self.root
 

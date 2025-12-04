@@ -13,34 +13,25 @@ from kivy.properties import StringProperty
 
 
 class PhonebookApp(App):
-    """
-    Main program - Kivy app to demo phonebook system
-    """
+    """Main program - Kivy app to demo phonebook system."""
     status_text = StringProperty()
 
     def __init__(self, **kwargs):
-        """
-        Construct main app
-        """
-        super(PhonebookApp, self).__init__(**kwargs)
-        # basic data example - dictionary of names: phone numbers
-        self.phonebook = {"Bob Brown": "0414144411", "Cat Cyan": "0441411211", "Oren Ochre": "0432123456"}
+        """Construct main Kivy app."""
+        super().__init__(**kwargs)
+        # Basic data example - dictionary of name: phone number
+        self.phonebook = {"Bob Brown": "0414144411", "Cat Cyan": "0441411211",
+                          "Oren Ochre": "0432123456"}
 
     def build(self):
-        """
-        Build the Kivy GUI
-        :return: reference to the root Kivy widget
-        """
+        """Build the Kivy app from the kv file."""
         self.title = "Phonebook Demo - Popup & Buttons"
         self.root = Builder.load_file('popup_demo.kv')
         self.create_entry_buttons()
         return self.root
 
     def create_entry_buttons(self):
-        """
-        Create the entry buttons and add them to the GUI
-        :return: None
-        """
+        """Create the entry buttons and add them to the GUI."""
         for name in self.phonebook:
             # create a button for each phonebook entry
             temp_button = Button(text=name)
@@ -54,19 +45,16 @@ class PhonebookApp(App):
         :param instance: the Kivy button instance
         :return: None
         """
-        # update status text
+        # Update status text
         name = instance.text
-        self.status_text = "{}'s number is {}".format(name, self.phonebook[name])
-        # set button state
+        self.status_text = f"{name}'s number is {self.phonebook[name]}"
+        # Set button state
         # print(instance.state)
         instance.state = 'down'
 
     def press_clear(self):
-        """
-        Clear any buttons that have been selected (visually) and reset status text
-        :return: None
-        """
-        # use the .children attribute to access all widgets that are "in" another widget
+        """Clear any buttons that have been selected (visually) and reset status text."""
+        # Use the .children attribute to access all widgets that are "in" another widget
         for instance in self.root.ids.entries_box.children:
             instance.state = 'normal'
         self.status_text = ""
@@ -88,13 +76,13 @@ class PhonebookApp(App):
         :return: None
         """
         self.phonebook[added_name] = added_number
-        # change the number of columns based on the number of entries (no more than 5 rows of entries)
+        # Change the number of columns based on the number of entries (<= 5 rows of entries)
         self.root.ids.entries_box.cols = len(self.phonebook) // 5 + 1
-        # add button for new entry (same as in create_entry_buttons())
+        # Add button for new entry (same as in create_entry_buttons())
         temp_button = Button(text=added_name)
         temp_button.bind(on_release=self.press_entry)
         self.root.ids.entries_box.add_widget(temp_button)
-        # close popup
+        # Close popup
         self.root.ids.popup.dismiss()
         self.clear_fields()
 
@@ -108,10 +96,7 @@ class PhonebookApp(App):
         self.root.ids.added_number.text = ""
 
     def press_cancel(self):
-        """
-        Handler for pressing cancel in the add entry popup
-        :return: None
-        """
+        """Handle pressing cancel in the add entry popup."""
         self.root.ids.popup.dismiss()
         self.clear_fields()
         self.status_text = ""

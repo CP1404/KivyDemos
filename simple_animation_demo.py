@@ -11,11 +11,12 @@ class SimpleAnimation(App):
     info_message = StringProperty()
 
     def __init__(self, **kwargs):
-        super(SimpleAnimation, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         Window.size = (500, 300)
         self.ball = None
 
     def build(self):
+        """Build the Kivy app from the kv file."""
         Clock.schedule_interval(self.update, 0.02)
         self.root = Builder.load_file("simple_animation_demo.kv")
         self.ball = Ellipse()
@@ -28,7 +29,7 @@ class SimpleAnimation(App):
         return self.root
 
     def update(self, seconds):
-        self.info_message = '{:.5f}'.format(seconds)
+        self.info_message = f'{seconds:.5f}'
         _x, _y = self.ball.pos
         self.ball.pos = _x + 1, _y
 

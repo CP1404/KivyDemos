@@ -20,13 +20,14 @@ class QuickSum(App):
     current_total = NumericProperty(0)
     NORMAL_DIGITS = ['3', '2', '1', '6', '5', '4', '9', '8', '7']
     MORE_DIGITS = ['13', '14', '15', '10', '11', '12', '½', '¼', '¾']
-    FRACTIONS = {'½': 0.5, '¼': 0.25, '¾': 0.75}
+    FRACTION_TO_DECIMAL = {'½': 0.5, '¼': 0.25, '¾': 0.75}
 
     def __init__(self, **kwargs):
-        super(QuickSum, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self._digits_toggled = False
 
     def build(self):
+        """Build the Kivy app from the kv file."""
         Window.size = 300, 600
         self.title = "QuickSum"
         self.root = Builder.load_file('quick_sum_gui.kv')
@@ -37,8 +38,8 @@ class QuickSum(App):
         # use the text of the button to figure out the
         # value to add to the current total
         digit = source.text
-        if digit in QuickSum.FRACTIONS.keys():
-            value = QuickSum.FRACTIONS[digit]
+        if digit in QuickSum.FRACTION_TO_DECIMAL:
+            value = QuickSum.FRACTION_TO_DECIMAL[digit]
             self._toggle_digits()
         else:
             value = int(digit)

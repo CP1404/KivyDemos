@@ -12,6 +12,7 @@ class TicTacToe(App):
         self.game = TicTacToeGame()
 
     def build(self):
+        """Build the Kivy app from the kv file."""
         self.title = "Tic Tac Toe! Version 2"
         self.root = Builder.load_file('game_v2.kv')
         return self.root

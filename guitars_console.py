@@ -1,4 +1,4 @@
-"""CP1404 Guitars console program"""
+"""CP1404/CP5632 - Guitars console program"""
 import json
 from guitar import Guitar
 
@@ -13,12 +13,14 @@ def main():
 
 
 def load_guitars(filename):
-    """Load guitars from filename"""
+    """Load guitars from JSON file."""
     guitars = []
     with open(filename) as in_file:
         records = json.load(in_file)
-    print(repr(records))  # Let's see what the data looks like
+    # For debugging: Let's see what the data looks like (a list of dictionaries)
+    print(repr(records))
     for record in records:
+        # Use ** dictionary unpacking to provide key:value pairs to the Guitar constructor
         guitars.append(Guitar(**record))
     return guitars
 

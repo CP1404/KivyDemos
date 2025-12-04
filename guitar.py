@@ -1,5 +1,5 @@
 """
-CP1404/CP5632 Guitar class from practicals
+CP1404/CP5632 - Guitar class from practicals
 """
 from datetime import datetime
 
@@ -24,7 +24,7 @@ class Guitar:
         return f"{vars(self)}"
 
     def get_age(self):
-        """Get the age of a guitar."""
+        """Get the age of a guitar based on its year and the current year."""
         current_year = datetime.now().year
         return current_year - self.year
 
@@ -33,5 +33,5 @@ class Guitar:
         return self.get_age() >= VINTAGE_AGE
 
     def __lt__(self, other):
-        """Less than, used for sorting Guitars by year released."""
+        """Determine if Guitar is considered less than the other object based on year (older is less than younger)."""
         return self.year < other.year

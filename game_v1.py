@@ -9,5 +9,5 @@ class TicTacToe(App):
         return self.root
 
 
-# create and start the App running
+# Create and run the App
 TicTacToe().run()

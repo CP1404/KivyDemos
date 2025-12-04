@@ -1,5 +1,5 @@
 """
-CP1404 Spinner Demo - drop-down list made from a dictionary
+CP1404/CP5632 Spinner Demo - drop-down list made from a dictionary
 Lindsay Ward, IT@JCU
 14/10/2015
 """

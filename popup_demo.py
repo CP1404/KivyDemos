@@ -1,8 +1,8 @@
 """
-Kivy Phonebook example for CP1404, IT@JCU
+CP1404/CP5632 - Kivy Phonebook example
 - dynamically create buttons based on content of dictionary
 - demo of a 'popup' window
-Lindsay Ward
+Lindsay Ward, IT@JCU
 01/05/2016
 """
 

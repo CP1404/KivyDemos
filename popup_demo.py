@@ -45,6 +45,8 @@ class PhonebookApp(App):
         :param instance: the Kivy button instance
         :return: None
         """
+        # Clear any previously selected entry
+        self.press_clear()
         # Update status text
         name = instance.text
         self.status_text = f"{name}'s number is {self.phonebook[name]}"
